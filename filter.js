@@ -1,7 +1,7 @@
 const filter = (array, callback) => {
 	let filteredArray = [];
-	for (let i of array) {
-		if (callback(i)) filteredArray = [...filteredArray, i];
+	for (let i = 0; i < array.length; i++) {
+		if (callback(array[i], i)) filteredArray = [...filteredArray, array[i]];
 	};
 	return filteredArray;
 }
