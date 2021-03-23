@@ -1,4 +1,4 @@
-const reduce = require('../reduce.js');
+// const reduce = require('../reduce.js');
 
 describe.skip('reduce function', () => {
 	it('returns the final value of an accumulator based on the contents of an array and a callback function', () => {
