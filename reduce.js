@@ -3,12 +3,12 @@ const reduce = (array, callback, initialValue) => {
 	
 	if(!initialValue) {
 		for (let i = 1; i < array.length; i++) {
-			accumulator = callback(accumulator, array[i]);
+			accumulator = callback(accumulator, array[i], i);
 		}
 	}
 	else {
-		for (let i of array) {
-			accumulator = callback(accumulator, i);
+		for (let i = 0; i < array.length; i++) {
+			accumulator = callback(accumulator, array[i], i);
 		}
 	}
 	
