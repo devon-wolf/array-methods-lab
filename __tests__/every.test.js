@@ -14,4 +14,12 @@ describe('every function', () => {
 
 		expect(every(original, callback)).toBeFalsy();
 	});
+
+	it('can make use of an item index as part of the callback', () => {
+		const original = [1, 2, 3];
+		const callback = jest.fn();
+		every(original, callback);
+
+		expect(callback).toHaveBeenNthCalledWith(1, original[0], 0);
+	});
 })
