@@ -15,4 +15,15 @@ describe('for each function', () => {
 		expect(callback).toHaveBeenNthCalledWith(4, 4, 3);
 		expect(callback).toHaveBeenNthCalledWith(5, 5, 4);
 	});
+
+	it('skips holes in the array', () => {
+		const original = [1,, 2,, 3,, 4,, 5];
+		const callback = jest.fn();
+
+		forEach(original, callback);
+
+		expect(callback).toHaveBeenCalledTimes(5);
+		expect(callback).toHaveBeenLastCalledWith(5, 8);
+
+	});
 });

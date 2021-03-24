@@ -23,4 +23,12 @@ describe('reduce function', () => {
 
 		expect(callback).toHaveBeenNthCalledWith(1, original[0], original[1], 1);
 	});
+
+	it('skips holes in the array', () => {
+		const original = [1,, 2,, 3,, 4,, 5,, 6];
+		const callback = (a, b) => a + b;
+		const initialValue = 40;
+
+		expect(reduce(original, callback, initialValue)).toEqual(61);
+	});
 });

@@ -22,4 +22,11 @@ describe('find index function', () => {
 
 		expect(callback).toHaveBeenNthCalledWith(1, original[0], 0);
 	});
+
+	it('skips holes in the array', () => {
+		const original = ['apple',, 'pear',, 'nectarine',, 'pear'];
+		const callback = n => n === 'pear';
+
+		expect(findIndex(original, callback)).toEqual(2);
+	});
 });

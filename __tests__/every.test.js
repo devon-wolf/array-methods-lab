@@ -22,4 +22,11 @@ describe('every function', () => {
 
 		expect(callback).toHaveBeenNthCalledWith(1, original[0], 0);
 	});
+
+	it('skips holes in the array', () => {
+		const original = [1,, 2,, 3,, 4,, 5];
+		const callback = n => n < 10;
+
+		expect(every(original, callback)).toBeTruthy();
+	});
 })
