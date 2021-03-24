@@ -15,4 +15,12 @@ describe('reduce function', () => {
 
 		expect(reduce(original, callback)).toEqual(21);
 	});
+
+	it('can make use of an item index as part of the callback', () => {
+		const original = [1, 2, 3];
+		const callback = jest.fn();
+		reduce(original, callback);
+
+		expect(callback).toHaveBeenNthCalledWith(1, original[0], original[1], 1);
+	});
 });

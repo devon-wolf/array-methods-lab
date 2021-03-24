@@ -6,6 +6,13 @@ describe('map function', () => {
 		const callback = n => n * 100;
 
 		expect(map(original, callback)).toEqual([100, 200, 300, 400, 500, 600]);
+	});
 
+	it('can make use of an item index as part of the callback', () => {
+		const original = [1, 2, 3];
+		const callback = jest.fn();
+		map(original, callback);
+
+		expect(callback).toHaveBeenNthCalledWith(1, original[0], 0);
 	});
 });

@@ -14,4 +14,12 @@ describe('find index function', () => {
 
 		expect(findIndex(original, callback)).toEqual(-1);
 	});
+
+	it('can make use of an item index as part of the callback', () => {
+		const original = [1, 2, 3];
+		const callback = jest.fn();
+		findIndex(original, callback);
+
+		expect(callback).toHaveBeenNthCalledWith(1, original[0], 0);
+	});
 });
