@@ -18,8 +18,10 @@ describe('filter function', () => {
 
 	it('skips holes in the array', () => {
 		const original = ['hello',, '78', 4,, 91, true];
+		const alternate = ['hello', undefined, '78', 4,, 91, true];
 		const callback = n => typeof n === 'number';
 
 		expect(filter(original, callback)).toEqual([4, 91]);
+		expect(filter(alternate, callback)).toEqual([4, 91]);
 	});
 });

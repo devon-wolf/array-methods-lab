@@ -26,9 +26,11 @@ describe('reduce function', () => {
 
 	it('skips holes in the array', () => {
 		const original = [1,, 2,, 3,, 4,, 5,, 6];
+		const alternate = [1, undefined, 2,, 3,, 4,, 5,, 6];
 		const callback = (a, b) => a + b;
 		const initialValue = 40;
 
 		expect(reduce(original, callback, initialValue)).toEqual(61);
+		expect(reduce(alternate, callback, initialValue)).toEqual(NaN);
 	});
 });

@@ -25,8 +25,10 @@ describe('find index function', () => {
 
 	it('skips holes in the array', () => {
 		const original = ['apple',, 'pear',, 'nectarine',, 'pear'];
+		const alternate = ['apple', undefined, 'pear',, 'nectarine',, 'pear'];
 		const callback = n => n === 'pear';
 
 		expect(findIndex(original, callback)).toEqual(2);
+		expect(findIndex(alternate, callback)).toEqual(2);
 	});
 });

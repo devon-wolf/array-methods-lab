@@ -18,8 +18,10 @@ describe('map function', () => {
 
 	it('skips holes in the array and returns holes in the same place', () => {
 		const original = [1,, 3, 4, 5, 6];
+		const alternate = [1, undefined, 3, 4, 5, 6];
 		const callback = n => n * 100;
 
 		expect(map(original, callback)).toEqual([100,, 300, 400, 500, 600]);
+		expect(map(alternate, callback)).toEqual([100, NaN, 300, 400, 500, 600]);
 	});
 });

@@ -18,12 +18,19 @@ describe('for each function', () => {
 
 	it('skips holes in the array', () => {
 		const original = [1,, 2,, 3,, 4,, 5];
+		const alternate = [1, undefined, 2,, 3,, 4,, 5];
+
 		const callback = jest.fn();
+		const altCallback = jest.fn();
 
 		forEach(original, callback);
+		forEach(alternate, altCallback);
 
 		expect(callback).toHaveBeenCalledTimes(5);
 		expect(callback).toHaveBeenLastCalledWith(5, 8);
+
+		expect(altCallback).toHaveBeenCalledTimes(6);
+		expect(altCallback).toHaveBeenNthCalledWith(2, undefined, 1);
 
 	});
 });
