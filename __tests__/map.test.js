@@ -15,4 +15,11 @@ describe('map function', () => {
 
 		expect(callback).toHaveBeenNthCalledWith(1, original[0], 0);
 	});
+
+	it('skips holes in the array and returns holes in the same place', () => {
+		const original = [1,, 3, 4, 5, 6];
+		const callback = n => n * 100;
+
+		expect(map(original, callback)).toEqual([100,, 300, 400, 500, 600]);
+	});
 });
