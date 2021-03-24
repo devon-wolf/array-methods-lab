@@ -3,14 +3,14 @@ const reduce = (array, callback, initialValue) => {
 	
 	if(!initialValue) {
 		for (let i = 1; i < array.length; i++) {
-			if (array[i]) {
+			if (array.hasOwnProperty(i)) {
 				accumulator = callback(accumulator, array[i], i);
 			}
 		}
 	}
 	else {
 		for (let i = 0; i < array.length; i++) {
-			if (array[i]) {
+			if (array.hasOwnProperty(i)) {
 				accumulator = callback(accumulator, array[i], i);
 			}
 		}
